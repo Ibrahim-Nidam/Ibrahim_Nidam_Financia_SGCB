@@ -36,30 +36,30 @@ L’application est construite avec une architecture en couches (présentation, 
 ## 📂 Structure du projet
 
 
-├── src/
-│    ├── ui/                # Couche de présentation (menus console)
-│    │   ├── Main.java
-│    │   └── ConsoleUI.java
-│    │
-│    ├── metier/            # Couche métier (logique)
-│    │   ├── compte/
-│    │   │   ├── Compte.java
-│    │   │   ├── CompteCourant.java
-│    │   │   └── CompteEpargne.java
-│    │   │
-│    │   └── operation/
-│    │       ├── Operation.java
-│    │       ├── Versement.java
-│    │       └── Retrait.java
-│    │
-│    └── util/              # Couche utilitaire
-│        └── DateUtils.java
-│        └── ValidationUtils.java
-│        
-├── docs/               # Documentation & images
-│   └── architecture.png
-│
-└── ReadMe .md
+    ├── src/
+    │    ├── ui/                # Couche de présentation (menus console)
+    │    │   ├── Main.java
+    │    │   └── ConsoleUI.java
+    │    │
+    │    ├── metier/            # Couche métier (logique)
+    │    │   ├── compte/
+    │    │   │   ├── Compte.java
+    │    │   │   ├── CompteCourant.java
+    │    │   │   └── CompteEpargne.java
+    │    │   │
+    │    │   └── operation/
+    │    │       ├── Operation.java
+    │    │       ├── Versement.java
+    │    │       └── Retrait.java
+    │    │
+    │    └── util/              # Couche utilitaire
+    │        └── DateUtils.java
+    │        └── ValidationUtils.java
+    │        
+    ├── docs/               # Documentation & images
+    │   └── architecture.png
+    │
+    └── ReadMe .md
 
 
 ---
