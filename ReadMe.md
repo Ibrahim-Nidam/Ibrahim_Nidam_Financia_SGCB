@@ -13,6 +13,12 @@ L’application est construite avec une architecture en couches (présentation, 
 
 ---
 
+## 🔗 Liens utiles
+- 📂 [Dépôt GitHub](https://github.com/Ibrahim-Nidam/Ibrahim_Nidam_Financia_SGCB.git)  
+- 📝 [Tableau Jira](https://ibrahimnidam-22.atlassian.net/jira/software/projects/SCRUM/boards/1?atlOrigin=eyJpIjoiZGYxNjRlMzRkNzZmNGYzZmIzZDY0ODQ0ZmFmMzQ4NjQiLCJwIjoiaiJ9)
+
+---
+
 ## 🛠️ Technologies utilisées
 - **Java 8** (JDK 1.8)  
 - **Java Time API** (`java.time.LocalDateTime`)  
@@ -30,21 +36,30 @@ L’application est construite avec une architecture en couches (présentation, 
 ## 📂 Structure du projet
 
 
-    src/
-    └── banque/
-    ├── ui/ # Couche de présentation (menus console)
-    │ └── Main.java
-    │
-    ├── metier/ # Couche métier (logique)
-    │ ├── Compte.java
-    │ ├── CompteCourant.java
-    │ ├── CompteEpargne.java
-    │ ├── Operation.java
-    │ ├── Versement.java
-    │ └── Retrait.java
-    │
-    ├── util/ # Couche utilitaire
-    │ └── ValidationUtils.java
+├── src/
+│    ├── ui/                # Couche de présentation (menus console)
+│    │   ├── Main.java
+│    │   └── ConsoleUI.java
+│    │
+│    ├── metier/            # Couche métier (logique)
+│    │   ├── compte/
+│    │   │   ├── Compte.java
+│    │   │   ├── CompteCourant.java
+│    │   │   └── CompteEpargne.java
+│    │   │
+│    │   └── operation/
+│    │       ├── Operation.java
+│    │       ├── Versement.java
+│    │       └── Retrait.java
+│    │
+│    └── util/              # Couche utilitaire
+│        └── DateUtils.java
+│        └── ValidationUtils.java
+│        
+├── docs/               # Documentation & images
+│   └── architecture.png
+│
+└── ReadMe .md
 
 
 ---
@@ -76,35 +91,24 @@ L’application est construite avec une architecture en couches (présentation, 
     ```
 2. **Compiler avec javac :**
    ```bash
-    javac -d bin src/banque/**/*.java
+    javac -d bin $(find src -name "*.java")
     ```
-3. **Cloner le dépôt GitHub :**
+3. **Exécuter l’application :**
    ```bash
-   java -cp bin banque.ui.Main
+   java -cp bin ui.Main
     ```
-4. **Cloner le dépôt GitHub :**
+4. **Générer un fichier JAR exécutable :**
    ```bash
-    jar cvfe banque.jar banque.ui.Main -C bin .
-    java -jar banque.jar
+    jar cvfe business.jar ui.Main -C bin .
+    java -jar business.jar
     ```
-
----
-🖼️ Captures d’écran (à compléter)
-
-Menu principal
-
-Création d’un compte
-
-Liste des opérations
-
-(ajoutez vos propres captures d’écran après tests dans la console)
 
 ---
 
 📊 Diagramme de classes
 
+![Architecture](docs/architecture.png)
 
-(placez ici votre diagramme UML après l’avoir dessiné)
 
 ---
 
