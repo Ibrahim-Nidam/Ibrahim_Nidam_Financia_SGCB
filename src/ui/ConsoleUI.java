@@ -156,4 +156,16 @@ public class ConsoleUI {
             System.out.println("Retrait effectué avec succès!");
         }
     }
+    
+    private void consulterSolde() {
+        System.out.println("\n=== CONSULTATION SOLDE ===");
+        String code = lireCodeCompte();
+        
+        Compte compte = bankService.consulterCompte(code);
+        if (compte != null) {
+            compte.afficherDetails();
+        } else {
+            System.out.println("Compte non trouvé.");
+        }
+    }
 }

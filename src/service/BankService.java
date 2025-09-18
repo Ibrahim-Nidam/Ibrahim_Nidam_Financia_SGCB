@@ -104,4 +104,8 @@ public class BankService {
             return false;
         }
     }
+    
+    public Compte consulterCompte(String codeCompte) {
+        return comptes.get(codeCompte);
+    }
 }
