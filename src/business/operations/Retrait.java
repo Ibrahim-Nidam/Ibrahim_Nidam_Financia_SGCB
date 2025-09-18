@@ -1,5 +1,19 @@
 package business.operations;
 
 public class Retrait extends Operation {
+    private String destination;
     
+    public Retrait(double montant, String destination) {
+        super(montant);
+        this.destination = destination;
+    }
+    
+    public String getDestination() { 
+        return destination; 
+    }
+    
+    @Override
+    public String toString() {
+        return "RETRAIT - " + super.toString() + " | Destination: " + destination;
+    }
 }
