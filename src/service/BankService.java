@@ -61,4 +61,24 @@ public class BankService {
             return false;
         }
     }
+    
+    public boolean effectuerVersement(String codeCompte, double montant, String source) {
+        try {
+            if (!ValidationUtils.isValidAmount(montant)) {
+                throw new IllegalArgumentException("Le montant doit être positif");
+            }
+            
+            Compte compte = comptes.get(codeCompte);
+            if (compte == null) {
+                throw new IllegalArgumentException("Compte non trouvé");
+            }
+            
+            compte.verser(montant, source);
+            return true;
+            
+        } catch (Exception e) {
+            System.err.println("Erreur lors du versement: " + e.getMessage());
+            return false;
+        }
+    }
 }

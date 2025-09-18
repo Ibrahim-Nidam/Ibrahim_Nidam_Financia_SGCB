@@ -32,4 +32,9 @@ public abstract class Compte {
     protected void addOperation(Operation operation) {
         this.listeOperations.add(operation);
     }
+
+    public void verser(double montant, String source) {
+        this.solde += montant;
+        this.listeOperations.add(new business.operations.Versement(montant, source));
+    }
 }

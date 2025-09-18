@@ -114,4 +114,25 @@ public class ConsoleUI {
             System.out.println("Compte créé avec succès!");
         }
     }
+    
+    private void effectuerVersement() {
+        System.out.println("\n=== VERSEMENT ===");
+        String code = lireCodeCompte();
+        
+        System.out.print("Montant à verser: ");
+        double montant;
+        try {
+            montant = Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Montant invalide.");
+            return;
+        }
+        
+        System.out.print("Source du versement: ");
+        String source = scanner.nextLine();
+        
+        if (bankService.effectuerVersement(code, montant, source)) {
+            System.out.println("Versement effectué avec succès!");
+        }
+    }
 }
