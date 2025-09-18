@@ -73,4 +73,45 @@ public class ConsoleUI {
             return -1;
         }
     }
+
+    private String lireCodeCompte() {
+        System.out.print("Code du compte (CPT-");
+        String codeNumerique = scanner.nextLine();
+        return "CPT-" + codeNumerique;
+    }
+    
+    private void creerCompte() {
+        System.out.println("\n=== CREATION DE COMPTE ===");
+        System.out.println("1. Compte Courant (découvert par défaut: 400MAD)");
+        System.out.println("2. Compte Epargne (taux par défaut: 2%)");
+        System.out.print("Type de compte: ");
+        
+        int typeCompte = lireChoixUtilisateur();
+        
+        String code = lireCodeCompte();
+        
+        System.out.print("Solde initial: ");
+        double soldeInitial;
+        try {
+            soldeInitial = Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Montant invalide.");
+            return;
+        }
+        
+        boolean succes = false;
+        
+        if (typeCompte == 1) {
+            succes = bankService.creerCompteCourant(code, soldeInitial);
+        } else if (typeCompte == 2) {
+            succes = bankService.creerCompteEpargne(code, soldeInitial);
+        } else {
+            System.out.println("Type de compte invalide.");
+            return;
+        }
+        
+        if (succes) {
+            System.out.println("Compte créé avec succès!");
+        }
+    }
 }
