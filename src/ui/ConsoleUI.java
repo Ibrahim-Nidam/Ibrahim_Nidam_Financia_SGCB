@@ -135,4 +135,25 @@ public class ConsoleUI {
             System.out.println("Versement effectué avec succès!");
         }
     }
+    
+    private void effectuerRetrait() {
+        System.out.println("\n=== RETRAIT ===");
+        String code = lireCodeCompte();
+        
+        System.out.print("Montant à retirer: ");
+        double montant;
+        try {
+            montant = Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Montant invalide.");
+            return;
+        }
+        
+        System.out.print("Destination du retrait: ");
+        String destination = scanner.nextLine();
+        
+        if (bankService.effectuerRetrait(code, montant, destination)) {
+            System.out.println("Retrait effectué avec succès!");
+        }
+    }
 }

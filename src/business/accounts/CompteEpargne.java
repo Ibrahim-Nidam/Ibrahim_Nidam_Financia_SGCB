@@ -14,6 +14,7 @@ public class CompteEpargne extends Compte {
     public boolean retirer(double montant, String destination) {
         if (solde >= montant) {
             solde -= montant;
+            addOperation(new Retrait(montant, destination));
             return true;
         }
         return false;

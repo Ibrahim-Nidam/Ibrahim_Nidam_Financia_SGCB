@@ -14,6 +14,7 @@ public class CompteCourant extends Compte {
     public boolean retirer(double montant, String destination) {
         if (solde - montant >= -decouvert) {
             solde -= montant;
+            addOperation(new Retrait(montant, destination));
             return true;
         }
         return false;

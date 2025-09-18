@@ -81,4 +81,27 @@ public class BankService {
             return false;
         }
     }
+    
+    public boolean effectuerRetrait(String codeCompte, double montant, String destination) {
+        try {
+            if (!ValidationUtils.isValidAmount(montant)) {
+                throw new IllegalArgumentException("Le montant doit être positif");
+            }
+            
+            Compte compte = comptes.get(codeCompte);
+            if (compte == null) {
+                throw new IllegalArgumentException("Compte non trouvé");
+            }
+            
+            if (!compte.retirer(montant, destination)) {
+                throw new IllegalArgumentException("Solde insuffisant pour cette opération");
+            }
+            
+            return true;
+            
+        } catch (Exception e) {
+            System.err.println("Erreur lors du retrait: " + e.getMessage());
+            return false;
+        }
+    }
 }
