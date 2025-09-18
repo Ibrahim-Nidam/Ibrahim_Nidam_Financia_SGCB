@@ -168,4 +168,9 @@ public class ConsoleUI {
             System.out.println("Compte non trouvé.");
         }
     }
+    
+    private void afficherTousLesComptes() {
+        System.out.println();
+        bankService.afficherTousLesComptes();
+    }
 }

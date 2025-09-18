@@ -108,4 +108,16 @@ public class BankService {
     public Compte consulterCompte(String codeCompte) {
         return comptes.get(codeCompte);
     }
+    
+    public void afficherTousLesComptes() {
+        if (comptes.isEmpty()) {
+            System.out.println("Aucun compte créé.");
+            return;
+        }
+        
+        System.out.println("=== LISTE DES COMPTES ===");
+        for (Compte compte : comptes.values()) {
+            System.out.printf("%s - Solde: %.2fMAD%n", compte.getCode(), compte.getSolde());
+        }
+    }
 }
