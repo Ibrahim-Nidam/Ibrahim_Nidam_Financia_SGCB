@@ -18,8 +18,6 @@
 .DS_Store
 Thumbs.db
 
-# Jar files (if generated)
-*.jar
 
 #eclipse
 .classpath

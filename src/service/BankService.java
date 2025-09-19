@@ -105,6 +105,37 @@ public class BankService {
         }
     }
     
+    public boolean effectuerVirement(String codeSource, String codeDestination, double montant) {
+        try {
+            if (!ValidationUtils.isValidAmount(montant)) {
+                throw new IllegalArgumentException("Le montant doit être positif");
+            }
+            
+            if (codeSource.equals(codeDestination)) {
+                throw new IllegalArgumentException("Les comptes source et destination doivent être différents");
+            }
+            
+            Compte compteSource = comptes.get(codeSource);
+            Compte compteDestination = comptes.get(codeDestination);
+            
+            if (compteSource == null || compteDestination == null) {
+                throw new IllegalArgumentException("Un ou plusieurs comptes non trouvés");
+            }
+            
+            if (!compteSource.retirer(montant, "Virement vers " + codeDestination)) {
+                throw new IllegalArgumentException("Solde insuffisant sur le compte source");
+            }
+            
+            compteDestination.verser(montant, "Virement de " + codeSource);
+            
+            return true;
+            
+        } catch (Exception e) {
+            System.err.println("Erreur lors du virement: " + e.getMessage());
+            return false;
+        }
+    }
+    
     public Compte consulterCompte(String codeCompte) {
         return comptes.get(codeCompte);
     }

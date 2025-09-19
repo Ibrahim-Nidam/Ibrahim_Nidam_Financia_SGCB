@@ -157,6 +157,28 @@ public class ConsoleUI {
         }
     }
     
+    private void effectuerVirement() {
+        System.out.println("\n=== VIREMENT ===");
+        System.out.println("Compte source:");
+        String codeSource = lireCodeCompte();
+        
+        System.out.println("Compte destination:");
+        String codeDestination = lireCodeCompte();
+        
+        System.out.print("Montant à virer: ");
+        double montant;
+        try {
+            montant = Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Montant invalide.");
+            return;
+        }
+        
+        if (bankService.effectuerVirement(codeSource, codeDestination, montant)) {
+            System.out.println("Virement effectué avec succès!");
+        }
+    }
+    
     private void consulterSolde() {
         System.out.println("\n=== CONSULTATION SOLDE ===");
         String code = lireCodeCompte();
