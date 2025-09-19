@@ -169,6 +169,13 @@ public class ConsoleUI {
         }
     }
     
+    private void consulterOperations() {
+        System.out.println("\n=== CONSULTATION OPERATIONS ===");
+        String code = lireCodeCompte();
+        
+        bankService.afficherOperations(code);
+    }
+    
     private void afficherTousLesComptes() {
         System.out.println();
         bankService.afficherTousLesComptes();

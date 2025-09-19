@@ -120,4 +120,23 @@ public class BankService {
             System.out.printf("%s - Solde: %.2fMAD%n", compte.getCode(), compte.getSolde());
         }
     }
+    
+    public void afficherOperations(String codeCompte) {
+        Compte compte = comptes.get(codeCompte);
+        if (compte == null) {
+            System.out.println("Compte non trouvé.");
+            return;
+        }
+        
+        List<Operation> operations = compte.getListeOperations();
+        if (operations.isEmpty()) {
+            System.out.println("Aucune opération effectuée sur ce compte.");
+            return;
+        }
+        
+        System.out.println("=== HISTORIQUE DES OPERATIONS - " + codeCompte + " ===");
+        for (Operation op : operations) {
+            System.out.println(op.toString());
+        }
+    }
 }
